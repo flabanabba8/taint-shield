@@ -1,0 +1,15 @@
+name: taint-shield
+version: "0.1.0"
+description: "Prompt-injection firewall: tracks what came from untrusted web, browser and file content and stops or asks before the agent acts on it with shell, files or messages."
+author: "Taint Shield contributors"
+license: GPL-3.0-or-later
+requires_hermes: ">=0.22.0"
+provides_tools:
+  - shield_report
+  - shield_scan
+  - shield_trust
+provides_hooks:
+  - pre_llm_call
+  - post_tool_call
+  - transform_tool_result
+  - pre_tool_call
