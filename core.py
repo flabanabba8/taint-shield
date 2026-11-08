@@ -14,11 +14,10 @@ TLDS = 'com|net|org|io|dev|ai|co|xyz|ru|cn|info|biz|me|app|cloud|top|site|online
 DOMAIN = re.compile(r'(?<![\w@.-])((?:[a-z0-9](?:[a-z0-9-]{0,40}[a-z0-9])?\.)+(?:' + TLDS + r'))(?![\w-])', re.I)
 IPV4 = re.compile(r'\b(?:\d{1,3}\.){3}\d{1,3}\b')
 COMMAND_LINE = re.compile(r'^\s*(?:\$ |# )?((?:curl|wget|nc|ncat|bash|sh|zsh|python3?|node|powershell|pwsh|rm|chmod|scp|sftp|ssh|cat|base64|tar|crontab|echo)\b[^\n]{4,300})$', re.M | re.I)
-PHRASES = [r'ignore (all |any |the )?(previous|prior|above|earlier) (instructions|directions|rules)', r'disregard (all |any |the )?(previous|prior|above) ', r'you (must|should|will) now ', r'new (system )?instructions?:',
-           r'do not (tell|inform|mention|alert|show) (the )?user', r"(don't|do not) (tell|let) (the )?user", r'system prompt', r'(send|email|post|upload|exfiltrate|forward) .{0,80}(to|at) .{0,60}(@|https?://)',
-           r'\bassistant:\s', r'as an ai (agent|assistant) you', r'<\s*(system|instructions?)\s*>', r'before (answering|responding|continuing),? (first )?(run|execute|call|send)']
+_PATTERNS = json.loads((Path(__file__).with_name('patterns.json')).read_text(encoding='utf-8'))
+PHRASES = _PATTERNS['phrases']
 PHRASE_RES = [re.compile(p, re.I) for p in PHRASES]
-SECRET_PATH = re.compile(r'(~|\$HOME|/home/[^/\s]+|/root)/(\.ssh|\.aws|\.gnupg|\.config/gcloud|\.docker|\.kube|\.netrc|\.env\b|\.hermes)|(^|[\s"\'/])\.env(\.\w+)?\b|id_(rsa|ed25519)|credentials(\.json)?\b|secrets?\.(json|ya?ml|env)|\bprintenv\b|\benv\s*\||\$\{?[A-Z_]*(KEY|TOKEN|SECRET|PASSWORD)\b', re.I)
+SECRET_PATH = re.compile(_PATTERNS['secret_path'], re.I)
 EGRESS = re.compile(r'\b(curl|wget|nc|ncat|scp|sftp|ftp|rsync|telnet|socat)\b|requests\.(get|post)|urllib|httpx|fetch\(|Invoke-WebRequest|Invoke-RestMethod', re.I)
 PERSIST = re.compile(r'(authorized_keys|\.bashrc|\.zshrc|\.profile|\.bash_profile|crontab|/etc/cron|\.git/hooks|systemd/(user|system)|/etc/(sudoers|passwd|hosts)|LaunchAgents|\.config/autostart)', re.I)
 SENSITIVE_TOOLS = {'terminal', 'execute_code', 'send_message', 'write_file', 'patch', 'email_send', 'browser_type', 'browser_navigate'}
