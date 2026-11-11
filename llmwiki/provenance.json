@@ -1,0 +1,59 @@
+{
+  "curated": "2026-11-10",
+  "status": "source reviewed; focused tests recorded in repository maintenance evidence, not new production/backend acceptance",
+  "sources": [
+    {
+      "package_path": "README.md",
+      "sha256": "a1cc45e0bfaad61c0ad14a7a1dc338838bb6595caef5709620ece269543ee010"
+    },
+    {
+      "package_path": "VERIFICATION.md",
+      "sha256": "89d0da4a5f6d37790d2b1efc5e48b20b924c3ecaa8564e22517cd7200d13cc2c"
+    },
+    {
+      "package_path": "__init__.py",
+      "sha256": "a3b93b83470c55ec26e98e09a65a02d3c62b5d11c054b3c816d3a94d341c3481"
+    },
+    {
+      "package_path": "core.py",
+      "sha256": "602c52ed2553e29521d3508c76ee8de00f9eda2bd53d6015053d6a55cfd81cf0"
+    },
+    {
+      "package_path": "plugin.yaml",
+      "sha256": "9cf4a5737430775974217b2a7f44b1c7ae7bbc80a81a650538ef133621aef82f"
+    },
+    {
+      "package_path": "skills/taint-shield/SKILL.md",
+      "sha256": "5144f437d24e430efee3c872c0632973feffea6b3c09b0f8ca5eb7ebe003dc77"
+    },
+    {
+      "package_path": "tests/test_corpus.py",
+      "sha256": "c7de5a8aaf0a266f1030bcf9d8beae0e4d15917c309cb8ed3074bcf73a86df04"
+    },
+    {
+      "package_path": "tests/test_prompt_injection_sources.py",
+      "sha256": "e138f4220b817c9fcb6c4931cc2f637f7fdf47525597fd9559f054535765ab36"
+    },
+    {
+      "package_path": "tests/test_shield.py",
+      "sha256": "8e0734ba774dd387b7661043a389ecf1a2a749d2be776f4031deef55346b427f"
+    }
+  ],
+  "quality_review": {
+    "date": "2026-11-10",
+    "method": "main-session source/contract review; actual registration capture; focused offline/mocked tests recorded separately",
+    "scope": [
+      "setup choices",
+      "worked task flow",
+      "failure diagnosis",
+      "acceptance limits",
+      "schema alignment"
+    ],
+    "live_scope": "No new production pipeline, model build, paid speech, install or publication. ModLab UM/REA help calls exercised actual installed CLIs."
+  },
+  "privacy_scope": {
+    "credentials_read": false,
+    "selected_installed_runtime_source_inspected_read_only": true,
+    "private_installs_modified": false
+  }
+}

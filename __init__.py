@@ -44,6 +44,9 @@ TOOLS = {
 
 
 def register(ctx):
+    if hasattr(ctx, 'register_skill'):
+        from pathlib import Path
+        ctx.register_skill('taint-shield', Path(__file__).parent / 'skills/taint-shield/SKILL.md', description='Review provenance before acting on untrusted content')
     ctx.register_hook('pre_llm_call', on_pre_llm_call)
     ctx.register_hook('post_tool_call', on_post_tool_call)
     ctx.register_hook('transform_tool_result', on_transform_tool_result)

@@ -1,5 +1,5 @@
 name: taint-shield
-version: "0.1.0"
+version: "0.2.2"
 description: "Prompt-injection firewall: tracks what came from untrusted web, browser and file content and stops or asks before the agent acts on it with shell, files or messages."
 author: "Taint Shield contributors"
 license: GPL-3.0-or-later
