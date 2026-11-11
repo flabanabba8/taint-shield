@@ -1,5 +1,7 @@
 # Taint Shield
 
+![Taint Shield: untrusted text stays untrusted](assets/thumbnail.jpg)
+
 Spot prompt injections hidden in webpages, documents, emails, transcripts or file contents before they redirect an assistant’s work. Taint Shield combines suspicious-instruction checks with source tracking and guards around sensitive actions.
 
 **At a glance**
